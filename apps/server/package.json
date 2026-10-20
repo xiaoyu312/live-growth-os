@@ -1,0 +1,32 @@
+{
+  "name": "@live-growth/server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "NODE_ENV=development STORAGE_DRIVER=memory HOST=127.0.0.1 PORT=4100 tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "db:migrate": "tsx src/migrate.ts",
+    "build": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fastify/cors": "11.0.1",
+    "@fastify/websocket": "11.0.1",
+    "@live-growth/contracts": "workspace:*",
+    "@live-growth/prompts": "workspace:*",
+    "@live-growth/rules": "workspace:*",
+    "@live-growth/source-adapters": "workspace:*",
+    "fastify": "5.4.0",
+    "ioredis": "5.6.1",
+    "postgres": "3.4.7",
+    "zod": "3.25.76",
+    "ws": "8.18.3"
+  },
+  "devDependencies": {
+    "@types/ws": "8.18.1",
+    "tsx": "4.20.3"
+  },
+  "license": "MIT"
+}

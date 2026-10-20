@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>直播运营副驾</title>
+  <style>
+    :root { color-scheme: dark; }
+    html, body { height: 100%; margin: 0; background: #071012; color: #8fa4a0; font: 13px/1.5 ui-sans-serif, "PingFang SC", sans-serif; }
+    #waiting { box-sizing: border-box; min-height: 100%; padding: 24px 18px; }
+    #waiting strong { display: block; margin-bottom: 8px; color: #65d6b2; font-size: 15px; }
+    iframe { display: block; width: 100%; height: 100%; border: 0; background: #071012; }
+    iframe[hidden], #waiting[hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <p id="waiting"><strong>正在连接真实直播副驾</strong>侧栏打开后，请把千川独立直播大屏留在这块屏幕上，不要点到后面或最小化。罗盘和千川不能同时作为唯一前台标签；优先让千川窗口保持可见。</p>
+  <iframe id="frame" title="直播运营副驾" hidden></iframe>
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

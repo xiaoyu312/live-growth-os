@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Live Growth OS</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { font: 13px/1.45 system-ui, sans-serif; width: 320px; margin: 0; padding: 16px; background: #101318; color: #eef2f7; }
+    h1 { font-size: 16px; margin: 0 0 8px; }
+    p { margin: 6px 0; color: #aab5c4; }
+    .status { border: 1px solid #2b3543; border-radius: 8px; padding: 10px; margin: 10px 0; }
+    .status strong { color: #8fe1b0; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    button { border: 1px solid #445166; border-radius: 6px; background: #1d2633; color: #fff; padding: 7px; cursor: pointer; }
+    button:hover { background: #29374a; }
+    select { box-sizing: border-box; width: 100%; border: 1px solid #445166; border-radius: 6px; padding: 7px; margin: 8px 0; background: #161c25; color: #fff; }
+    .error { color: #ffadad; min-height: 20px; }
+    .fine { font-size: 11px; }
+    details { margin-top: 12px; color: #8b98a8; }
+    details summary { cursor: pointer; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Live Growth OS</h1>
+    <p class="fine" id="hint">在罗盘直播大屏点「连接真实直播」。不要点下方调试里的网络探针或音频探针。</p>
+  <div class="status"><div>当前页面：<strong id="page">检查中</strong></div><div>探针：<span id="probe">未启动</span></div><div>音轨状态：<span id="audio-lifecycle">未启动</span></div><div>网络状态：<span id="audio-network">未知</span></div><div>最近刷新观察：<span id="audio-refresh">未观察</span></div><div id="counts" class="fine">暂无结构摘要</div></div>
+  <div class="grid">
+    <button id="start-live">连接真实直播（罗盘）</button>
+    <button id="stop-live">停止真实直播</button>
+    <button id="start-network" hidden>连接千川数据</button>
+    <button id="stop-network" hidden>停止采集</button>
+    <button id="recover-source" hidden>刷新千川页面</button>
+  </div>
+  <p id="error" class="error"></p>
+  <details>
+    <summary>调试（一般不用）</summary>
+    <div class="grid" style="margin-top:8px">
+      <button id="start-audio">开始音频探针（仅罗盘经营页）</button>
+      <button id="stop-audio">停止音频探针</button>
+      <button id="collect-dom">按需探测 DOM 结构</button>
+      <button id="export">导出脱敏会话</button>
+    </div>
+    <select id="marker" aria-label="结构化业务标记">
+      <option value="action_open">动作：打开</option>
+      <option value="action_switch">动作：切换</option>
+      <option value="action_refresh">动作：刷新</option>
+      <option value="action_compare">动作：对照</option>
+      <option value="subject_product_click">对象：商品点击</option>
+      <option value="subject_conversion">对象：成交</option>
+      <option value="subject_ad_spend">对象：投流消耗</option>
+      <option value="subject_roi">对象：ROI</option>
+      <option value="subject_product_list">对象：商品列表</option>
+      <option value="subject_audience">对象：人群画像</option>
+      <option value="subject_comment">对象：评论</option>
+      <option value="subject_other">对象：其他</option>
+    </select>
+    <button id="add-marker">保存业务标记</button>
+  </details>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

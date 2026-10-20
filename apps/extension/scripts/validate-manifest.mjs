@@ -1,0 +1,12 @@
+import { readFileSync } from "node:fs";
+const manifest = JSON.parse(readFileSync(new URL("../manifest.json", import.meta.url), "utf8"));
+if (manifest.manifest_version !== 3) throw new Error("manifest_version 必须为 3");
+const expected = ["storage", "activeTab", "scripting", "debugger", "tabCapture", "offscreen", "sidePanel"];
+if (JSON.stringify(manifest.permissions) !== JSON.stringify(expected)) throw new Error(`Phase 2A 权限必须严格为：${expected.join(",")}`);
+if (manifest.side_panel?.default_path !== "sidepanel.html") throw new Error("side_panel.default_path 必须为 sidepanel.html");
+const forbidden = ["cookies", "tabs", "webRequest", "webRequestBlocking", "downloads"];
+for (const permission of manifest.permissions ?? []) if (forbidden.includes(permission)) throw new Error(`禁止权限：${permission}`);
+if (JSON.stringify(manifest.host_permissions ?? []) !== JSON.stringify(["http://127.0.0.1:4100/*"])) throw new Error("真实试点只允许本机 Server host_permissions");
+if (manifest.background?.service_worker !== "service-worker.js" || manifest.background?.type !== "module") throw new Error("service_worker 必须是 module service-worker.js");
+if (manifest.action?.default_popup !== "popup.html") throw new Error("popup 必须指向 popup.html");
+console.log("Phase 2A MV3 manifest 静态校验通过");

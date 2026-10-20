@@ -1,0 +1,566 @@
+.operator-rules-panel {
+  --operator-ink: var(--live-text, #f2eee5);
+  --operator-muted: var(--live-muted, #9d9b95);
+  --operator-panel: var(--live-surface, #1b1e1a);
+  --operator-surface: var(--live-bg, #151714);
+  --operator-line: var(--live-line, #343830);
+  --operator-accent: var(--live-accent, #ffb14a);
+  --operator-danger: var(--danger, #f06e5d);
+  --operator-ok: var(--ok, #82d36b);
+  max-width: 900px;
+  margin: 18px 0 0;
+  color: var(--operator-ink);
+  font-size: 13px;
+}
+
+.operator-rules-panel *,
+.operator-rules-panel *::before,
+.operator-rules-panel *::after {
+  box-sizing: border-box;
+}
+
+.operator-rules-heading,
+.operator-rules-title-row,
+.operator-rules-card-title,
+.operator-rules-active-kicker,
+.operator-rules-actions,
+.operator-rules-meta,
+.operator-rules-choice-row,
+.operator-rules-owner,
+.operator-rules-coverage-list article > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.operator-rules-heading {
+  align-items: flex-end;
+  border-bottom: 1px solid var(--operator-line);
+  padding: 0 0 12px;
+}
+
+.operator-rules-title-row {
+  justify-content: flex-start;
+}
+
+.operator-rules-heading h2 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 21px;
+  letter-spacing: .04em;
+}
+
+.operator-rules-meta {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  color: var(--operator-muted);
+  font-size: 11px;
+}
+
+.operator-rules-mode-chip {
+  border: 1px solid color-mix(in srgb, var(--operator-accent) 64%, var(--operator-line));
+  padding: 3px 6px;
+  color: var(--operator-ink);
+  background: color-mix(in srgb, var(--operator-accent) 10%, transparent);
+  font-weight: 700;
+}
+
+.operator-rules-note,
+.operator-rules-error,
+.operator-rules-config-note,
+.operator-rules-availability {
+  display: grid;
+  gap: 3px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--operator-line);
+  background: color-mix(in srgb, var(--operator-surface) 88%, var(--operator-accent) 12%);
+}
+
+.operator-rules-availability {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--operator-surface);
+  font-size: 11px;
+}
+
+.operator-rules-availability strong {
+  color: var(--operator-accent);
+}
+
+.operator-rules-availability span {
+  color: var(--operator-muted);
+  text-align: right;
+}
+
+.operator-rules-note strong {
+  color: var(--operator-accent);
+  font-size: 12px;
+}
+
+.operator-rules-note span,
+.operator-rules-help,
+.operator-rules-config-note,
+.operator-rules-fold summary small,
+.operator-rules-review,
+.operator-rules-coverage-list small,
+.operator-rules-coverage-list p {
+  color: var(--operator-muted);
+  font-size: 11px;
+}
+
+.operator-rules-data-gap-note {
+  margin: 12px 0 0;
+  padding: 9px 12px;
+  border: 1px solid color-mix(in srgb, var(--operator-accent) 58%, var(--operator-line));
+  color: var(--operator-muted);
+  background: color-mix(in srgb, var(--operator-surface) 92%, var(--operator-accent) 8%);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.operator-rules-error {
+  border-color: color-mix(in srgb, var(--operator-danger) 70%, var(--operator-line));
+  background: color-mix(in srgb, var(--operator-danger) 18%, var(--operator-surface));
+  color: var(--operator-ink);
+}
+
+.operator-rules-fold {
+  margin-top: 10px;
+  border: 1px solid var(--operator-line);
+  background: color-mix(in srgb, var(--operator-panel) 96%, black 4%);
+}
+
+.operator-rules-fold summary,
+.operator-rules-other summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 42px;
+  padding: 10px 12px;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+}
+
+.operator-rules-fold summary::-webkit-details-marker,
+.operator-rules-other summary::-webkit-details-marker {
+  display: none;
+}
+
+.operator-rules-fold summary::after,
+.operator-rules-other summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--operator-accent);
+  font: 700 16px/1 monospace;
+}
+
+.operator-rules-fold[open] summary::after,
+.operator-rules-other[open] summary::after {
+  content: "−";
+}
+
+.operator-rules-form {
+  display: grid;
+  gap: 12px;
+  padding: 0 12px 14px;
+}
+
+.operator-rules-form fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 9px;
+  border: 1px solid var(--operator-line);
+}
+
+.operator-rules-form legend,
+.operator-rules-field {
+  color: var(--operator-muted);
+  font-size: 11px;
+}
+
+.operator-rules-field {
+  display: grid;
+  gap: 6px;
+}
+
+.operator-rules-choice-row {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.operator-rules-choice-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 33px;
+  padding: 5px 10px;
+  border: 1px solid var(--operator-line);
+  color: var(--operator-muted);
+  cursor: pointer;
+}
+
+.operator-rules-choice-row label.is-selected {
+  border-color: var(--operator-accent);
+  color: var(--operator-ink);
+  background: color-mix(in srgb, var(--operator-accent) 13%, transparent);
+}
+
+.operator-rules-choice-row input {
+  accent-color: var(--operator-accent);
+}
+
+.operator-rules-field input,
+.operator-rules-field select,
+.operator-rules-field textarea,
+.operator-rules-form fieldset > input {
+  width: 100%;
+  min-height: 34px;
+  border: 1px solid var(--operator-line);
+  border-radius: 0;
+  padding: 7px 9px;
+  background: var(--operator-surface);
+  color: var(--operator-ink);
+  outline: none;
+}
+
+.operator-rules-field textarea {
+  min-height: 62px;
+  resize: vertical;
+}
+
+.operator-rules-field input:focus,
+.operator-rules-field select:focus,
+.operator-rules-field textarea:focus,
+.operator-rules-form fieldset > input:focus {
+  border-color: var(--operator-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--operator-accent) 18%, transparent);
+}
+
+.operator-rules-form fieldset > input + input {
+  margin-top: 7px;
+}
+
+.operator-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.operator-rules-actions {
+  justify-content: flex-start;
+  min-height: 34px;
+}
+
+.operator-rules-primary {
+  min-height: 34px;
+  border: 1px solid var(--operator-accent);
+  padding: 6px 14px;
+  background: var(--operator-accent);
+  color: #18130c;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.operator-rules-primary:disabled {
+  cursor: wait;
+  opacity: .58;
+}
+
+.operator-rules-saved {
+  color: var(--operator-ok);
+  font-size: 11px;
+}
+
+.operator-rules-active {
+  margin-top: 16px;
+}
+
+.operator-rules-active-kicker {
+  align-items: baseline;
+  margin-bottom: 7px;
+}
+
+.operator-rules-active-kicker > span {
+  color: var(--operator-danger);
+  font-weight: 800;
+}
+
+.operator-rules-active-kicker.is-data-gap > span {
+  color: var(--operator-accent);
+}
+
+.operator-rules-active-kicker small {
+  color: var(--operator-muted);
+  font-size: 11px;
+}
+
+.operator-rules-primary-card {
+  border: 1px solid color-mix(in srgb, var(--operator-danger) 68%, var(--operator-line));
+  border-left: 1px solid color-mix(in srgb, var(--operator-danger) 68%, var(--operator-line));
+  padding: 14px;
+  background: color-mix(in srgb, var(--operator-panel) 92%, var(--operator-danger) 8%);
+}
+
+.operator-rules-primary-card.is-data-gap {
+  border-color: color-mix(in srgb, var(--operator-accent) 64%, var(--operator-line));
+  border-left-color: var(--operator-accent);
+  background: color-mix(in srgb, var(--operator-panel) 95%, var(--operator-accent) 5%);
+}
+
+.operator-rules-card-title {
+  align-items: flex-start;
+}
+
+.operator-rules-card-title > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.operator-rules-card-title h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.operator-rules-priority {
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  padding: 3px 5px;
+  color: var(--operator-danger);
+  font: 700 10px/1 "DIN Alternate", sans-serif;
+}
+
+.operator-rules-card-title.is-data-gap .operator-rules-priority {
+  color: var(--operator-accent);
+}
+
+.operator-rules-review {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.operator-rules-action-line {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 13px;
+  padding: 10px;
+  background: color-mix(in srgb, var(--operator-surface) 80%, transparent);
+}
+
+.operator-rules-action-line strong {
+  color: var(--operator-accent);
+  font-size: 11px;
+}
+
+.operator-rules-action-line p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.operator-rules-manual-note {
+  margin: 0;
+  color: var(--operator-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.operator-rules-form > .operator-rules-note {
+  margin-top: 0;
+}
+
+.operator-rules-owner {
+  justify-content: flex-start;
+  margin: 12px 0 0;
+}
+
+.operator-rules-owner > div {
+  display: flex;
+  gap: 7px;
+  align-items: baseline;
+}
+
+.operator-rules-owner dt {
+  color: var(--operator-muted);
+  font-size: 11px;
+}
+
+.operator-rules-owner dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.operator-rules-block {
+  margin-top: 13px;
+}
+
+.operator-rules-block > strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--operator-muted);
+  font-size: 11px;
+}
+
+.operator-rules-block ul,
+.operator-rules-coverage-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.operator-rules-block li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding: 5px 0;
+  border-top: 1px solid color-mix(in srgb, var(--operator-line) 72%, transparent);
+}
+
+.operator-rules-block li span {
+  font-weight: 700;
+}
+
+.operator-rules-block li small {
+  color: var(--operator-muted);
+}
+
+.operator-rules-hypotheses li::before {
+  content: "待排查";
+  flex: 0 0 auto;
+  color: var(--operator-accent);
+  font-size: 10px;
+}
+
+.operator-rules-other {
+  margin-top: 8px;
+  border: 1px solid var(--operator-line);
+  background: var(--operator-panel);
+}
+
+.operator-rules-other summary {
+  min-height: 38px;
+  font-size: 12px;
+}
+
+.operator-rules-other > div {
+  display: grid;
+  gap: 7px;
+  padding: 0 10px 10px;
+}
+
+.operator-rules-other article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--operator-line);
+}
+
+.operator-rules-other article span,
+.operator-rules-other article small {
+  color: var(--operator-muted);
+  font-size: 11px;
+}
+
+.operator-rules-other article p {
+  grid-column: 1 / -1;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.operator-rules-config-note {
+  margin-bottom: 0;
+}
+
+.operator-rules-coverage {
+  margin-top: 10px;
+}
+
+.operator-rules-coverage-list {
+  display: grid;
+  gap: 6px;
+  padding: 0 12px 12px;
+}
+
+.operator-rules-coverage-list article {
+  padding: 8px 0;
+  border-top: 1px solid var(--operator-line);
+}
+
+.operator-rules-coverage-list article > div {
+  align-items: baseline;
+}
+
+.operator-rules-coverage-list article > div span {
+  color: var(--operator-ok);
+  font-size: 11px;
+}
+
+.operator-rules-coverage-list article.is-missing > div span {
+  color: var(--operator-accent);
+}
+
+.operator-rules-coverage-list article p {
+  margin: 5px 0 0;
+}
+
+.operator-rules-coverage-list article small {
+  display: block;
+  margin-top: 3px;
+  line-height: 1.45;
+}
+
+@media (max-width: 760px) {
+  .operator-rules-heading,
+  .operator-rules-card-title,
+  .operator-rules-active-kicker {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .operator-rules-meta {
+    justify-content: flex-start;
+  }
+
+  .operator-rules-availability {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .operator-rules-availability span {
+    text-align: left;
+  }
+
+  .operator-rules-review {
+    text-align: left;
+  }
+
+  .operator-rules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .operator-rules-action-line {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .operator-rules-panel * {
+    scroll-behavior: auto;
+  }
+}
+
+.live-pilot-operator-enabled .live-pilot-guide-column { position: static; max-height: none; overflow: visible; align-self: start; }
+.live-pilot-light .operator-rules-panel { --operator-danger: #9d3c1c; }

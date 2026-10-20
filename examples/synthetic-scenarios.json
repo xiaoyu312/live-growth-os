@@ -1,0 +1,47 @@
+{
+  "classification": "independently_synthetic",
+  "seed": 20300101,
+  "startAt": "2030-01-01T00:00:00.000Z",
+  "profiles": {
+    "historical_morning": {
+      "timeLabel": "Synthetic morning",
+      "sampleSize": 0,
+      "perMinute": {
+        "roomEnterUv": 20,
+        "roomImpressionUv": 100,
+        "productImpressionUv": 16,
+        "productClickUv": 4,
+        "paidBuyerCount": 0.5
+      },
+      "grossGmvFen": 150000,
+      "adSpendFen": 60000
+    },
+    "historical_afternoon": {
+      "timeLabel": "Synthetic afternoon",
+      "sampleSize": 0,
+      "perMinute": {
+        "roomEnterUv": 24,
+        "roomImpressionUv": 120,
+        "productImpressionUv": 20,
+        "productClickUv": 5,
+        "paidBuyerCount": 0.75
+      },
+      "grossGmvFen": 180000,
+      "adSpendFen": 70000
+    },
+    "historical_evening": {
+      "timeLabel": "Synthetic evening",
+      "sampleSize": 0,
+      "perMinute": {
+        "roomEnterUv": 28,
+        "roomImpressionUv": 140,
+        "productImpressionUv": 24,
+        "productClickUv": 6,
+        "paidBuyerCount": 1
+      },
+      "grossGmvFen": 210000,
+      "adSpendFen": 80000
+    }
+  },
+  "note": "No source business rows, statistics, people, products, transcripts or identifiers were read by this generator."
+}

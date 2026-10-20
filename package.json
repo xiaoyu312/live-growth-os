@@ -1,0 +1,37 @@
+{
+  "name": "live-growth-os",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "desktop:build": "node scripts/desktop/build.mjs",
+    "dev": "pnpm --parallel --filter @live-growth/server --filter @live-growth/web dev",
+    "build": "pnpm -r --if-present build",
+    "lint": "eslint .",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm -r --if-present test:unit",
+    "db:migrate": "pnpm --filter @live-growth/server db:migrate",
+    "check:public": "node --test tests/public-source.test.mjs",
+    "desktop:pack:mac": "pnpm desktop:build && pnpm --filter @live-growth/desktop exec electron-builder --mac --arm64",
+    "desktop:pack:win": "pnpm desktop:build && pnpm --filter @live-growth/desktop exec electron-builder --win --x64",
+    "demo:generate": "node scripts/generate-synthetic-demo.mjs"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
+  "devDependencies": {
+    "@eslint/js": "9.31.0",
+    "@playwright/test": "1.54.1",
+    "@types/node": "22.16.5",
+    "eslint": "9.31.0",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.38.0",
+    "vitest": "3.2.4"
+  },
+  "license": "MIT"
+}

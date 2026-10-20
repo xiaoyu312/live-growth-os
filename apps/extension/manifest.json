@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Live Growth OS",
+  "version": "0.0.1",
+  "description": "由用户手动启动的本机直播数据采集扩展；仅处理授权页面，不附带账户、业务记录或原始音频。",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "debugger",
+    "tabCapture",
+    "offscreen",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:4100/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Live Growth OS"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}

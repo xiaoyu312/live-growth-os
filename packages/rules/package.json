@@ -1,0 +1,23 @@
+{
+  "name": "@live-growth/rules",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./source-group-health": "./src/source-group-health.ts",
+    "./source-recovery": "./src/source-recovery.ts"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test:unit": "vitest run"
+  },
+  "dependencies": {
+    "@live-growth/contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "@live-growth/source-adapters": "workspace:*"
+  },
+  "license": "MIT"
+}

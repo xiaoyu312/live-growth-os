@@ -1,0 +1,20 @@
+{
+  "name": "@live-growth/extension",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "tsc --noEmit -p tsconfig.json && node scripts/validate-manifest.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json && node scripts/validate-manifest.mjs",
+    "test": "vitest run tests/unit",
+    "test:unit": "vitest run tests/unit",
+    "build": "tsc -p tsconfig.json && node scripts/build.mjs && node scripts/validate-dist.mjs"
+  },
+  "dependencies": {
+    "@live-growth/source-adapters": "workspace:*",
+    "@live-growth/rules": "workspace:*"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  },
+  "license": "MIT"
+}
